@@ -88,9 +88,7 @@ Announcements Section
 
 ![image](https://user-images.githubusercontent.com/71189359/140925036-80680820-a9b5-4585-b0ee-dcd050a435b3.png)
 
-Profile Section
 
-![image](https://user-images.githubusercontent.com/71189359/140925122-a7872673-b047-4c89-9d2a-b35a1c500e25.png)
 
 
 
