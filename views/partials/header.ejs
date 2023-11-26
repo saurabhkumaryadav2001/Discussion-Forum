@@ -1,0 +1,44 @@
+<!-- Nav Bar -->
+<nav class="navBar">
+    <ul>
+        <li><a href="#">Discussion Forum</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li>
+            <div class="dropdown logout">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#profileModal" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                 
+                </ul>
+            </div>
+        </li>
+        <li><a href="#" class="throwTopic" data-bs-toggle="modal" data-bs-target="#postModal">Ask a Question</a></li>
+        
+    </ul>
+</nav>
+<!-- Nav Bar ends -->
+<hr>
+
+<!-- Top Categories -->
+<div class="container">
+    <div class="categories">
+        <a href="/dashboard/all" class="catLink">
+            All
+        </a>
+        <a href="/dashboard/alumni" class="catLink">
+            Alumi
+        </a>
+        <a  href="/dashboard/events" class="catLink">
+            College Events
+        </a>
+        <a href="/dashboard/announcements" class="catLink">
+            College Announcements
+        </a>
+    </div>
+</div>
+<br>

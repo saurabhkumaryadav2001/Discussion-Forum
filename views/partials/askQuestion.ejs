@@ -1,0 +1,48 @@
+<form action="/dashboard/addPost" method="POST" encType="multipart/form-data">
+    <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Create a New Discussion Topic <i
+                            class="bi bi-cursor-fill"></i></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-3">
+                        <label for="postTitle">Post Title<span class="star">*</span></label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i
+                                    class="bi bi-pencil-square"></i></span>
+                            <input type="text" id="postTitle" name="post_title" class="form-control"
+                                placeholder="Enter your Post Title" aria-label="postTitle"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="md-form mb-2">
+                        <label for="postBody">Post Body<span class="star">*</span></label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-pen"></i></span>
+                            <textarea type="text" id="postBody" name="post_body" class="form-control"
+                                placeholder="Enter Post Description" aria-label="postBody"
+                                aria-describedby="basic-addon1"
+                                style="margin-top: 0px; margin-bottom: 0px; height: 158px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="md-form mb-2">
+                        <label for="postImage">Add a image</label>
+
+                        <input type="file" id="postImage" name="post_image" class="form-control"
+                            aria-label="postImage" aria-describedby="basic-addon1">
+
+                    </div>
+
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="buton" class="btn btn-outline-danger">Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,253 @@
+*{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif Helvetica, sans-serif;  
+    margin: 0; 
+    padding: 0;                                                                                               
+}
+
+html{
+    margin-bottom: 100px;
+}
+
+body{
+    background-color: white;
+}
+/*------------------------------------------------ Global -----------------------------------------*/
+a{
+    text-decoration: none;
+}
+
+/* ----------------------------------------------- Nav Bar ---------------------------------------- */
+.navBar{
+    background-color: black;
+    width: 100%;
+    height: 9vh;
+}
+
+.navBar ul {
+    padding: 15px;
+}
+
+.navBar ul li{
+    display: inline;
+    list-style: none;
+}
+
+.navBar ul li a{
+    color:aliceblue;
+    padding: 10px;
+}
+
+.throwTopic{
+    float: right;
+    border: 1px solid white;
+    background-color: rgb(211, 26, 26);
+    padding: 7px !important;
+}
+
+.dropdown-toggle i{
+    font-size: 25px;
+    color: yellow;
+}
+
+.dropdown-menu a{
+   color: black !important;
+}
+
+
+
+
+/* ----------------------------- Login Modal -------------------------------- */
+label{
+    display: block;
+}
+
+.container .right{
+    float: right;
+    width: 30%;
+    height: auto;
+    border: 1px solid #ccc;
+}
+
+.container .left{
+    display: inline;
+    float: left;
+    width: 65%;
+
+}
+
+/* category buttons */
+.categories{
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+.catLink{
+    cursor: pointer;
+    min-width: 24%;
+    border-radius: 40px;
+    border: 1px solid #ccc;
+    min-height: 20px;
+    color: blue;
+}
+
+.catLink:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: cornflowerblue;
+    color: white;
+}
+
+/* Posts */
+
+
+.post{
+    border: 1px solid #ccc;
+    padding: 4%;
+}
+
+small{
+    display: block;
+}
+
+.viewBtn{
+    display: block;
+    margin: 0 auto;
+    background-color: cornflowerblue;
+    border: #ccc;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    width: fit-content;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+.viewBtn:hover{
+    box-shadow: 0 12px 16px 0 rgba(240, 77, 77, 0.24), 0 17px 50px 0 rgba(67, 24, 185, 0.19);
+    transition: all ease 0.5s;
+    color: bisque;
+
+}
+
+.postFooter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.postTitle{
+    font-size: large;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.postLine{
+    border: 2px solid red;
+}
+
+.postedBy{
+    color: gray;
+}
+
+/* Right Part */
+.right h4{
+    text-align: center;
+}
+
+.right hr{
+    border:2px solid red;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.headlines{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.star{
+    color: red;
+    font-weight: bold;
+}
+
+/*logout*/
+.logout{
+    margin-left: 1%;
+    float: right;
+    margin-right: 10%;
+}
+
+/* Main post */
+.mainPost{
+   padding: 10px;
+   display: inline;
+   float: left;
+   border: 1px solid #ccc;
+   min-height: 400px;
+   width: 60%;
+}
+
+.mainTitle{
+    text-align: center;
+}
+
+.mainImage{
+    border-color: aqua;
+    text-align: center;
+
+}
+.mainImage > img {
+    width: 80%;
+}
+.dummy{
+    min-height: 500px;
+    border: 1px solid red;
+}
+
+
+/* Comment Section */
+.mainPostComments{
+    float: right;
+    border:1px solid #ccc;
+    height: 500px;
+    overflow: scroll;
+    width: 32%;
+    margin-left: 5%;
+}
+
+.commentHeader{
+    text-align: center;
+    margin: 0;
+}
+
+.mainPostComments > hr{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.addComment{
+    text-align: center;
+    margin-top: 20px;
+}
+.addComment > a{
+    text-decoration: none;
+    border: 1px solid white;
+    background-color: cornflowerblue;
+    border-radius: 40px;
+    padding: 8px 18px;
+    color: white;
+}
+
+
+.allComments .comment{
+    margin-top: 20px;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+
+/*events*/
+.card > img{
+    height: 300px;
+}

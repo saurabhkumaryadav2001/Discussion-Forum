@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Forum</title>
+    <!--------------------------- Bootstrap Css --------------------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <%- include('./partials/header.ejs') %>
+        <div class="container">
+            <div class="mainPost">
+                <div class="mainTitle">
+                    <h4>
+                        <%=post.post_title%>
+                    </h4>
+                </div>
+                <div class="postedBy"><small><em><i style="color:gray;font-size:large" class="bi bi-person-circle"></i>  By
+                            <%=post.posted_by_name%>, <%=post.date%></em></small>
+                </div>
+                <hr class="postLine">
+                <div class="mainImage">
+                    <img src="data:<%=post.image.contentType%>;base64,
+            <%=post.image.data.toString('base64')%>" alt="Not Available">
+                </div>
+                <hr class="postLine">
+                <div class="mainPostBody">
+                    <%=post.post_body%>
+                </div>
+                <hr class="postLine">
+                <div class="postFooter">
+                    <div class="likes">
+                        <p id="like"><i class="bi bi-heart"></i> Like</p>
+                    </div>
+                    <div class="upvotes">
+                        <p id="upvote"><i class="bi bi-arrow-up-circle"></i> Upvote</p>
+                    </div>
+                    <div class="downvotes">
+                        <p id="downvote"><i class="bi bi-arrow-down-circle"></i> Downvote</p>
+                    </div>
+                    <div class="comments">
+                        <p><i class="bi bi-chat-right-text-fill"></i> Comments  <%=post.comments.length%></p>
+                    </div>
+                </div>
+            </div>
+            <div class="mainPostComments">
+                <div class="addComment">
+                    <a data-bs-toggle="modal" data-bs-target="#commentModal" href="#">Add a Comment</a>
+                </div>
+                <hr class="postLine">
+                <div class="commentHeader">
+                    All Comments (<%=post.comments.length%>)
+                </div>
+                <div class="allComments">
+                    <% for(var i = 0;i < post.comments.length;i++) { %>
+                    <div class="comment">
+                        <div class="postedBy">
+                            <i class="bi bi-person-circle"></i>&ensp; <%=post.comments[i].commented_by%>
+                        </div>
+                        <div class="commentBody">
+                           <%=post.comments[i].comment%>
+                        </div>
+                    </div>
+                    <% } %>
+                   
+                </div>
+            </div>
+        </div>
+
+        <form action="/dashboard/addPost" method="POST" encType="multipart/form-data">
+            <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Create a New Discussion Topic <i
+                                    class="bi bi-cursor-fill"></i></h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-3">
+                                <label for="postTitle">Post Title<span class="star">*</span></label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i
+                                            class="bi bi-pencil-square"></i></span>
+                                    <input type="text" id="postTitle" name="post_title" class="form-control"
+                                        placeholder="Enter your Post Title" aria-label="postTitle"
+                                        aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="md-form mb-2">
+                                <label for="postBody">Post Body<span class="star">*</span></label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-pen"></i></span>
+                                    <textarea type="text" id="postBody" name="post_body" class="form-control"
+                                        placeholder="Enter Post Description" aria-label="postBody"
+                                        aria-describedby="basic-addon1"
+                                        style="margin-top: 0px; margin-bottom: 0px; height: 158px;"></textarea>
+                                </div>
+                            </div>
+                            <div class="md-form mb-2">
+                                <label for="postImage">Add a image</label>
+
+                                <input type="file" id="postImage" name="post_image" class="form-control"
+                                    aria-label="postImage" aria-describedby="basic-addon1">
+
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="buton" class="btn btn-outline-danger">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form action="/dashboard/comment?id=<%=post._id%>" method="POST">
+            <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Comment On the Post <i
+                                    class="bi bi-chat-left-text-fill"></i></h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-2">
+                                <label for="comment">Comment <span class="star">*</span></label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-pen"></i></span>
+                                    <textarea type="text" id="comment" name="comment" class="form-control"
+                                        placeholder="Add your comment.." aria-label="comment"
+                                        aria-describedby="basic-addon1"
+                                        style="margin-top: 0px; margin-bottom: 0px; height: 158px;" required></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="buton" class="btn btn-outline-danger">Comment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <%- include('partials/profile.ejs') %>
+
+</body>
+
+<!-- Botstrap Js Plugin -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+<script src="/js/scripts.js"></script>
+</html>

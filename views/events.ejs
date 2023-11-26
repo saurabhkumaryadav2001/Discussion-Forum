@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discussion Forum</title>
+  <!--------------------------- Bootstrap Css --------------------------->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <!-- Nav Bar -->
+<nav class="navBar">
+  <ul>
+      <li><a href="#">Discussion Forum</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li>
+          <div class="dropdown logout">
+              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-person-circle"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#profileModal" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+               
+              </ul>
+          </div>
+      </li>
+      <li><a href="#" class="throwTopic" data-bs-toggle="modal" data-bs-target="#eventModal">Add a New Event</a></li>
+      
+  </ul>
+</nav>
+<!-- Nav Bar ends -->
+<hr>
+
+<!-- Top Categories -->
+<div class="container">
+  <div class="categories">
+      <a href="/dashboard/all" class="catLink">
+          All
+      </a>
+      <a href="/dashboard/alumni" class="catLink">
+          Alumi
+      </a>
+      <a  href="/dashboard/events" class="catLink">
+          College Events
+      </a>
+      <a href="/dashboard/announcements" class="catLink">
+          College Announcements
+      </a>
+  </div>
+</div>
+<br>
+    <%if (events) { %>
+    <div class="container">
+      <div class="row row-cols-md-3">
+        <% for(var i = 0;i < events.length;i++) { %>
+        <div class="col">
+        <div class="card">
+          <img class="card-img-top" src="data:<%=events[i].image.contentType%>;base64,
+          <%=events[i].image.data.toString('base64')%>" alt="Not Available">
+          <div class="card-body">
+            <h5 class="card-title"><%=events[i].event_title%></h5>
+            <p class="card-text"><%=events[i].event_body%></p>
+            <a href="#" class="btn btn-primary">More Details</a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      </div>
+  <% } %>
+
+       <form action="/dashboard/addEvent" method="POST" encType="multipart/form-data">
+        <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Add A New Event<i
+                                class="bi bi-cursor-fill"></i></h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-3">
+                            <label for="postTitle">Event Title<span class="star">*</span></label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="bi bi-pencil-square"></i></span>
+                                <input type="text" id="postTitle" name="event_title" class="form-control"
+                                    placeholder="Enter your Event Title" aria-label="postTitle"
+                                    aria-describedby="basic-addon1" required autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label for="postBody">Give a short description<span class="star">*</span></label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-pen"></i></span>
+                                <textarea type="text" id="postBody" name="event_body" class="form-control"
+                                    placeholder="What is your Event About?" aria-label="postBody"
+                                    aria-describedby="basic-addon1"
+                                    style="margin-top: 0px; margin-bottom: 0px; height: 158px;"required></textarea>
+                            </div>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label for="postImage">Add a image<span class="star">*</span></label>
+    
+                            <input type="file" id="postImage" name="event_image" class="form-control"
+                                aria-label="postImage" aria-describedby="basic-addon1" required>
+    
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="buton" class="btn btn-outline-danger">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+      <%- include('partials/profile') %>
+</body>
+
+</html>
