@@ -5,8 +5,6 @@ A discussion forum which is designed for colleges where students of a particular
 
 
 ###
-Deployed Link
-https://discussion-forum-clg.herokuapp.com/
 
 ## Run Locally
 
