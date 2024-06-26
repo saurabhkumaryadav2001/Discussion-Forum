@@ -4,9 +4,7 @@
 A discussion forum which is designed for colleges where students of a particular college can interact and share their thoughts on a particular topic. 
 
 
-###
-Deployed Link
-https://discussion-forum-clg.herokuapp.com/
+
 
 ## Run Locally
 
